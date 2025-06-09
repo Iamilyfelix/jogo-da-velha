@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Jogo da velha</h1>
+    <p>Quando houver um ganhador reinicie para zerar o jogo</p>
+    <div class="tabuleiro">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    <p id="vezTexto">Vez do jogador: X</p>
+
+    <script>
+        let jogador = "X";
+        const vezTexto = document.getElementById("vezTexto");
+        const boxes = document.querySelectorAll(".box");
+        boxes.forEach((box, index) => {
+            box.addEventListener("click", () => {
+                if (jogador === "X") {
+                    box.style.backgroundColor = "blue";
+                    jogador = "0";
+                    atualizarVez();
+                } else {
+                    box.style.backgroundColor = "red";
+                    jogador = "X"
+                    atualizarVez();
+                }
+            });
+        });
+
+        function atualizarVez() {
+            vezTexto.textContent = `Vez do jogador: ${jogador}`;
+        }
+    </script>
+</body>
+
+</html>
